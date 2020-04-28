@@ -1,0 +1,30 @@
+version: '3'
+services:
+     Drupal:
+        image: Drupal
+        ports:
+          - 8080:80
+        depends_on:
+          - MySQL
+
+        restart: always
+        volumes:
+          - my_drupal_data:/var/www/html
+
+
+     MySQL:
+        image: MySQL:5.7
+        restart: always
+        volumes: 
+           - my_sql_data:/var/lib/mysql
+
+        environment:
+           - MYSQL_ROOT_PASSWORD: redhat
+           - MYSQL_USER: Ajay
+           - MYSQL_PASSWORD: redhat
+           - MYSQL_DATABASE: project
+
+volumes:
+  my_drupal_data:
+  my_sql_data:
+        
